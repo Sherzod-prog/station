@@ -16,7 +16,7 @@ import { CurrentUser } from '@/user/decorators/user.decorator';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-emploee.dto';
 
-@Controller('employee')
+@Controller('employeis')
 export class EmployeeController {
   constructor(private readonly employeeService: EmployeeService) {}
   @Auth()

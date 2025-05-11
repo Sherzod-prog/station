@@ -21,6 +21,8 @@ model User {
 
   stations Station[]
 
+  expense Expense[]
+
   @@map("user")
 }
 
@@ -80,6 +82,9 @@ model Expense {
 
   employee   Employee? @relation(fields: [employeeId], references: [id])
   employeeId String?
+
+  user   User?   @relation(fields: [userId], references: [id])
+  userId String?
 
   @@map("expense")
 }
