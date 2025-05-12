@@ -69,13 +69,11 @@ export class AuthService {
       user = await this.prisma.user.create({
         data: {
           email: req.user.email,
-          picture: req.user.picture,
           name: req.user.name,
+          phone: req.user.phone,
         },
         include: {
           stations: true,
-          orders: true,
-          favorites: true,
         },
       });
     }

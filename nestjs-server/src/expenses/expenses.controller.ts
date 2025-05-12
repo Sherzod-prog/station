@@ -12,7 +12,7 @@ import {
 import { ExpensesService } from './expenses.service';
 import { Auth } from '@/auth/decorators/auth.decorator';
 import { CurrentUser } from '@/user/decorators/user.decorator';
-import { UpdateExpenseDto } from './dto/updeta-expense.dto';
+import { UpdateExpenseDto } from './dto/update-expense.dto';
 import { CreateExpenseDto } from './dto/create-expense.dto';
 
 @Controller('expenses')

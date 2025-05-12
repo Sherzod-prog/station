@@ -42,7 +42,6 @@ export class ProductService {
       },
       include: {
         category: true,
-        color: true,
       },
     });
   }
@@ -53,77 +52,11 @@ export class ProductService {
       },
       include: {
         category: true,
-        color: true,
-        reviews: true,
       },
     });
     if (!product) throw new NotFoundException('Товар не найден');
 
     return product;
-  }
-
-  async getByCategory(categoryId: string) {
-    const product = await this.prisma.product.findMany({
-      where: {
-        category: {
-          id: categoryId,
-        },
-      },
-      include: {
-        category: true,
-      },
-    });
-    if (!product) throw new NotFoundException('Товар не найден');
-
-    return product;
-  }
-
-  async getMostPopular() {
-    const getMostPopularProducts = await this.prisma.orderItem.groupBy({
-      by: ['productId'],
-      _count: {
-        id: true,
-      },
-      orderBy: {
-        _count: {
-          id: 'desc',
-        },
-      },
-    });
-    const productIds = getMostPopularProducts.map(
-      (item: { productId: string }) => item.productId,
-    );
-    const products = await this.prisma.product.findMany({
-      where: {
-        id: {
-          in: productIds,
-        },
-      },
-      include: {
-        category: true,
-      },
-    });
-    return products;
-  }
-
-  async getSimilar(id: string) {
-    const currentProduct = await this.getById(id);
-    if (!currentProduct) throw new NotFoundException('Товар не найден');
-    const products = await this.prisma.product.findMany({
-      where: {
-        category: { title: currentProduct.category.title },
-        NOT: {
-          id: currentProduct.id,
-        },
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
-      include: {
-        category: true,
-      },
-    });
-    return products;
   }
 
   async create(stationId: string, dto: ProductDto) {
@@ -131,9 +64,6 @@ export class ProductService {
       data: {
         title: dto.title,
         description: dto.description,
-        price: dto.price,
-        image: dto.images,
-        categoryId: dto.categoryId,
         stationId,
       },
     });

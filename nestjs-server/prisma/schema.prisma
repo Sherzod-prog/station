@@ -12,16 +12,16 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  name     String @default("Не указано")
-  email    String @unique
-  phone    String @unique
-  password String
+  name     String  @default("Не указано")
+  email    String  @unique
+  phone    String  @unique
+  password String?
 
   role Role @default(USER)
 
   stations Station[]
-
-  expense Expense[]
+  sales    Sale[]
+  expense  Expense[]
 
   @@map("user")
 }
@@ -62,6 +62,9 @@ model Sale {
   station   Station? @relation(fields: [stationId], references: [id])
   stationId String?  @map("station_id")
 
+  user   User?   @relation(fields: [userId], references: [id])
+  userId String?
+
   @@map("sale")
 }
 
@@ -94,7 +97,10 @@ model Product {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  title String
+  title       String
+  description String
+
+  category Category[]
 
   station   Station? @relation(fields: [stationId], references: [id])
   stationId String?  @map("station_id")
@@ -127,12 +133,16 @@ model Category {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  title String
+  title       String
+  description String
 
   expense Expense[]
 
   station   Station? @relation(fields: [stationId], references: [id])
   stationId String?  @map("station_id")
+
+  product   Product? @relation(fields: [productId], references: [id])
+  productId String?
 
   @@map("category")
 }

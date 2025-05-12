@@ -8,6 +8,11 @@ export class AuthDto {
   email: string;
 
   @IsString({
+    message: 'Номер телефона обязательна',
+  })
+  phone: string;
+
+  @IsString({
     message: 'Пароль обязателен',
   })
   @MinLength(6, {

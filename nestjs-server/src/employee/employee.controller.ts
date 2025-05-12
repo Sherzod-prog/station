@@ -13,8 +13,8 @@ import {
 import { EmployeeService } from './employee.service';
 import { Auth } from '@/auth/decorators/auth.decorator';
 import { CurrentUser } from '@/user/decorators/user.decorator';
+import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
-import { UpdateEmployeeDto } from './dto/update-emploee.dto';
 
 @Controller('employeis')
 export class EmployeeController {

@@ -31,20 +31,6 @@ export class ProductController {
   async getById(@Param('id') id: string) {
     return this.productService.getById(id);
   }
-  @Get('by-category/:categoryId')
-  async getByCategory(@Param('categoryId') categoryId: string) {
-    return this.productService.getByCategory(categoryId);
-  }
-
-  @Get('most-popular')
-  async getMostPopular() {
-    return this.productService.getMostPopular();
-  }
-
-  @Get('similar/:id')
-  async getSimilar(@Param('id') id: string) {
-    return this.productService.getSimilar(id);
-  }
 
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
