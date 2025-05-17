@@ -1,6 +1,7 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { SelectStore } from "./SelectStore";
+import { ModeToggle } from "./ModeToggle";
 
 export default function UserSection() {
   return (
@@ -18,6 +19,7 @@ export default function UserSection() {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
+        <ModeToggle />
       </div>
     </div>
   );

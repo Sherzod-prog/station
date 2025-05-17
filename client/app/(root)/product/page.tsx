@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function ProdustPage() {
-  return <div>ProdustPage</div>;
+  return <div className="w-[1268px]">ProdustPage</div>;
 }

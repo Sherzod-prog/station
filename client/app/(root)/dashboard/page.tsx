@@ -4,7 +4,7 @@ import { ClipboardIcon, ShoppingCartIcon, TruckIcon } from "lucide-react";
 
 export default function Dashboard() {
   return (
-    <div className="ml-4 w-full">
+    <div className="ml-4 w-[1268px] border-2">
       <h1>Dashboard</h1>
       <div className="flex items-center justify-between gap-5">
         <DashboardCard

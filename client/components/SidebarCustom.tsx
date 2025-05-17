@@ -13,6 +13,8 @@ import {
   UsersRoundIcon,
 } from "lucide-react";
 import Item from "./SidebarItem";
+import axios from "axios";
+import { Button } from "./ui/button";
 
 const items = [
   {
@@ -53,6 +55,13 @@ const items = [
 ];
 
 const Sidebar = () => {
+  const logOut = () => {
+    const res = axios
+      .post("http://localhost:5000/auth/logout")
+      .then((res) => alert(res.data.message))
+      .finally(() => localStorage.removeItem("token"));
+    return res;
+  };
   return (
     <div className="w-fit px-2 left-0 bg-[#eeeeee] dark:bg-[#1f1f1f] rounded-2xl">
       <div className="flex flex-col p-2 gap-96">
@@ -64,8 +73,8 @@ const Sidebar = () => {
           ))}
         </div>
         <div className="mt-14 border-t-2 py-2">
-          <Link onClick={() => console.log("logout")} href="auth">
-            <Item icon={LogOutIcon} label="Settings" path="auth" />
+          <Link onClick={() => logOut()} href="auth/register">
+            <Item icon={LogOutIcon} label="Exit" path="auth" />
           </Link>
         </div>
       </div>

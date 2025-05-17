@@ -19,6 +19,13 @@ import { CreateEmployeeDto } from './dto/create-employee.dto';
 @Controller('employeis')
 export class EmployeeController {
   constructor(private readonly employeeService: EmployeeService) {}
+
+  @Auth()
+  @Get()
+  async getAll(@CurrentUser('id') userId: string) {
+    return this.employeeService.getAll();
+  }
+
   @Auth()
   @Get('by-id/:id')
   async getById(
