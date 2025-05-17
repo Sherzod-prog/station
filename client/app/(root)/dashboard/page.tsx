@@ -1,11 +1,12 @@
+import { ChartComponent } from "@/components/chart-area";
 import DashboardCard from "@/components/DashboardCard";
 import { Button } from "@/components/ui/button";
 import { ClipboardIcon, ShoppingCartIcon, TruckIcon } from "lucide-react";
 
 export default function Dashboard() {
   return (
-    <div className="ml-4 w-[1268px] border-2">
-      <h1>Dashboard</h1>
+    <div className="ml-4 w-[1268px]">
+      <h1 className="my-4">Dashboard</h1>
       <div className="flex items-center justify-between gap-5">
         <DashboardCard
           text="Olingan yoqilg’i"
@@ -29,7 +30,9 @@ export default function Dashboard() {
           to="to-[#A530F2]"
         />
       </div>
-      <Button className="m-4 p-2 cursor-pointer">Click</Button>
+      <div className="my-4">
+        <ChartComponent />
+      </div>
     </div>
   );
 }
